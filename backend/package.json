@@ -1,0 +1,20 @@
+{
+  "name": "fleet-portal-backend",
+  "version": "1.0.0",
+  "description": "Demo backend + SQLite database for testing the CSE-IOT-06 frontend only. Not the real CSE-IOT-05 backend.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "seed": "node src/seed.js",
+    "dev": "node src/server.js",
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.4.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "ws": "^8.18.3"
+  }
+}
