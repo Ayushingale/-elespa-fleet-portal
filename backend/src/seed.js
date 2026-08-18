@@ -23,13 +23,19 @@ function seed() {
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
   `);
   vehicleNames.forEach((id, i) => {
+    // Generate more varied data for UI monitoring
+    const isOffline = i % 4 === 0;
+    const baseBattery = [15, 85, 45, 95, 25, 65, 10, 100][i % 8];
+    const baseSpeed = isOffline ? 0 : [0, 45, 80, 25, 110, 60, 15, 30][i % 8];
+    const status = isOffline ? 'offline' : 'online';
+
     insertVehicle.run(
       id,
       `Elespa Transit ${id}`,
       'Elespa HEV-200',
-      i % 4 === 0 ? 'offline' : 'online',
-      Math.round(40 + Math.random() * 55),
-      i % 4 === 0 ? 0 : Math.round(20 + Math.random() * 60),
+      status,
+      baseBattery,
+      baseSpeed,
       Math.round(35 + Math.random() * 25),
       'OK'
     );

@@ -15,11 +15,13 @@ axiosClient.interceptors.request.use((config) => {
   return config;
 });
 
-// Centralized handling for expired/invalid tokens
+// Centralized handling for expired/invalid tokens and timeouts
 axiosClient.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    const isTimeout = error.code === 'ECONNABORTED' || error.message?.includes('timeout');
+    
+    if (error.response?.status === 401 || isTimeout) {
       clearToken();
       window.location.href = '/login';
     }
