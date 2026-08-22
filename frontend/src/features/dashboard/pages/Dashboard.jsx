@@ -110,6 +110,7 @@ export default function Dashboard() {
   } = useQuery({
     queryKey: ['vehicles'],
     queryFn: listVehicles,
+    refetchInterval: 3000,
   });
 
   /* ── derived stats ─────────────────────────────────────────────── */
